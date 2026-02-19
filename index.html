@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estante Jacomel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="biblioteca.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">📚 Estante Jacomel</div>
+            <ul class="nav-links">
+                <li><button class="nav-link1">Catálogo</button></li>
+                <li><button class="nav-link2">Administrativo</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Student Page -->
+    <div class="page active" id="student-page">
+        <div class="container">
+            <div class="hero-section">
+                <h1>Descubra Novos Mundos</h1>
+                <p>Explore nosso acervo completo e reserve seus livros favoritos</p>
+            </div>
+
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" placeholder="Buscar por título, autor ou disponibilidade...">
+                    <span class="search-icon">🔍</span>
+                </div>
+                <button class="atualizarLista">Atualizar lista</button>
+            </div>
+
+            <div class="books-grid">
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Page -->
+    <div class="page" id="admin-page">
+        <div class="container admin-container active">
+            <div class="admin-header">
+                <h1>Painel Administrativo</h1>
+                <p>Gerencie empréstimos, solicitações e o acervo da biblioteca</p>
+            </div>
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="requests">Solicitações</button>
+            </div>
+
+            <!-- Requests Tab -->
+            <div class="tab-content active" id="requests-tab">
+                <button class="atualizarAlunos">Atualizar lista</button>
+                <div class="requests-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Aluno</th>
+                                <th>Livro</th>
+                                <th>Turma</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="requests-table">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="bookModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div></div>
+                <button class="modal-close">X</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-cover">
+                    <img src="" alt="">
+                </div>
+                <div class="book-details">
+                    <h2>O Pequeno Príncipe</h2>
+                    <h3>Antoine de Saint-Exupéry</h3>
+
+                    <div class="detail-section">
+                        <h4>Sinopse</h4>
+                        <p>Uma fábula poética sobre um pequeno príncipe que viaja de planeta em planeta, conhecendo
+                            personagens inusitados e aprendendo lições sobre amor, amizade e responsabilidade. Uma das
+                            obras mais traduzidas e lidas do mundo.</p>
+                    </div>
+                </div>
+                <div class="book-buttons">
+                    <button class="emprestado-button">Emprestar</button>
+                    <button class="disponivel-button">Devolver</button>
+                    <button class="remover-livro-button">Remover Livro</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="addBookModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div></div>
+                <button class="modal-close2">X</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-cover-add" style="background: none;">
+                    <div class="modal-cover-add-cover"></div>                
+                </div>
+                <div class="online-search-div">
+                    <button class="online-search-btn">Procurar Livro Online</button>
+                </div>
+                <div class="book-details">
+                    <input type="text" placeholder="Nome do Livro" id="nomeLivro" title="Nome do Livro">
+                    <input type="text" placeholder="Autor" id="autor" title="Autor">
+                    <input type="text"
+                        placeholder="SlugID" title="Escreva a primeira letra de cada palavra do nome do livro ou o código único dele junto com um 'a' na frente"
+                        id="slugID">
+                    <textarea name="sinopse" id="sinopse" placeholder="Sinopse" title="Sinopse"></textarea>
+                    <textarea name="descricao" id="descricao" placeholder="Descrição" title="Descrição"></textarea>
+                    <input type="text" placeholder="Capa (URL)" id="capa" title="Capa (URL)">
+                    <a href="" class="verifyCapa" target="_blank">Verificar Capa</a>
+                    <button class="addBookButton">Adicionar Livro</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="online-search-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div></div>
+                <button class="modal-close3">X</button>
+            </div>
+            <div class="modal-body">
+                <div class="online-search-div2">
+                    <input type="text" placeholder="Insira o nome do livro, autor ou o código único dele" id="nomeLivroOnline">
+                    <div class="apis-button" >
+                        <h2>Selecione a API</h2>
+                        <p>Deixe o mouse em cima de cada um para ver o que cada API retorna</p>
+                        <button class="google-books-btn" id="google-books-btn"><img src="https://i.ibb.co/Hfyq5N3g/Google-Books-Logo-removebg-preview.png" alt="Google Books" title="Na maior parte das vezes, traz tudo, desde nome até sinopse."></button>
+                        <button class="open-library-btn" id="open-library-btn"><img src="https://i.ibb.co/ccN136HP/800px-Open-Library-tight-logo-svg-removebg-preview.png" alt="Open Library" title="Na maioria das vezes, traz apenas o nome, autor e capa, ou seja, você terá que adicionar a sinopse e a descrição manualmente."></button>
+                    </div>
+                    <button class="online-search-btn2">Procurar Livro Online</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="biblioteca.js"></script>
+</body>
+
+</html>
